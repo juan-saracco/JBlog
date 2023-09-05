@@ -25,15 +25,18 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
+    //COOREGIR
     public Usuario actualizarUsuario(Usuario usuario, Long id){
-        Usuario usuarioActualizado = usuarioRepository.getById(id);
+        Usuario usuarioActualizado = usuarioRepository.findById(id).get();
 
-        usuarioActualizado.setUserName(usuario.getUserName());
-        usuarioActualizado.setEmail(usuario.getEmail());
-        usuarioActualizado.setPublicaciones(usuario.getPublicaciones());
+            usuarioActualizado.setUserName(usuario.getUserName());
+            usuarioActualizado.setEmail(usuario.getEmail());
+            usuarioActualizado.setPublicaciones(usuario.getPublicaciones());
 
-        return usuarioActualizado;
+
+            return usuarioRepository.save(usuarioActualizado);
     }
+
 
     public boolean eliminarUsuario(Long id){
         try {

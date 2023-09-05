@@ -2,13 +2,15 @@ package com.jblog.demo.controller;
 
 import com.jblog.demo.model.Publicacion;
 import com.jblog.demo.model.Usuario;
+import com.jblog.demo.repository.UsuarioRepository;
 import com.jblog.demo.service.PublicacionService;
 import com.jblog.demo.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,13 +22,17 @@ public class UsuarioController {
     private UsuarioService usuarioService;
     @Autowired
     private PublicacionService publicacionService;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
+    // bien!
     @GetMapping
-    public ResponseEntity<List<Usuario>> obenerTodos(){
+    public ResponseEntity<List<Usuario>> obenerTodos() {
         List<Usuario> usuarios = usuarioService.obtenerTodos();
         return ResponseEntity.ok(usuarios);
     }
 
+    // chequear
     @GetMapping("/{id}/publicaciones")
     public ResponseEntity<Optional<Publicacion>> obtenerPublicacionesDeUsuario(@PathVariable Long id) {
         Optional<Usuario> usuario = usuarioService.buscarPorId(id);
@@ -39,29 +45,41 @@ public class UsuarioController {
         }
     }
 
-
-    //bien
+    // bien!
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> obtenerPorId(@PathVariable Long id){
+    public ResponseEntity<Usuario> obtenerPorId(@PathVariable Long id) {
         Optional<Usuario> usuario = usuarioService.buscarPorId(id);
         return usuario.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    //bien
+    // bien!
     @PostMapping
     public ResponseEntity<Usuario> crearUsuario(@RequestBody Usuario usuario) {
         Usuario nuevoUsuario = usuarioService.guardarUsuario(usuario);
         return ResponseEntity.ok(nuevoUsuario);
     }
 
-    //CORREGIR
+    // chequear!
+    @PostMapping("/publicaciones/{id}")
+    public ResponseEntity<Publicacion> crearPublicacionParaUsuario(@PathVariable Long id,
+            @RequestBody Publicacion publicacion) {
+
+        Usuario usuario = usuarioRepository.findById(id).get();
+
+        publicacion.setAutor(usuario);
+        Publicacion nuevaPublicacion = publicacionService.guardarPublicacion(publicacion);
+        publicacion.setFechaCreacion(LocalDateTime.now());
+        return ResponseEntity.ok(nuevaPublicacion);
+    }
+
+    // bien!
     @PutMapping("/{id}")
     public ResponseEntity<Usuario> actualizarUsuario(@RequestBody Usuario usuario, @PathVariable Long id) {
         Usuario usuarioActualizado = usuarioService.actualizarUsuario(usuario, id);
         return ResponseEntity.ok(usuarioActualizado);
     }
 
-    //bien
+    // bien!
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
         boolean eliminado = usuarioService.eliminarUsuario(id);
@@ -71,4 +89,5 @@ public class UsuarioController {
             return ResponseEntity.notFound().build();
         }
     }
+
 }

@@ -27,11 +27,10 @@ public class PublicacionService {
     }
 
     public Publicacion actualizarPublicacion(Publicacion publicacion, Long id) {
-        Publicacion publicacionActualizada = publicacionRepository.getById(id);
+        Publicacion publicacionActualizada = publicacionRepository.findById(id).get();
 
         publicacionActualizada.setTitulo(publicacion.getTitulo());
         publicacionActualizada.setContenido(publicacion.getContenido());
-        publicacionActualizada.setFechaCreacion(publicacion.getFechaCreacion());
 
         return publicacionActualizada;
     }

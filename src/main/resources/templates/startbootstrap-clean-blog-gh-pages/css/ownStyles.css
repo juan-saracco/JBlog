@@ -1,0 +1,101 @@
+.masthead{
+    animation: backAnim 60s ease-in-out 0s 1 normal forwards;
+}
+
+@keyframes backAnim {
+	0% {
+		background-position: center top;
+		background-size: 100%;
+	}
+
+	100% {
+		background-position: center top;
+		background-size: 150%;
+	}
+}
+
+.post{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 1rem;
+    margin: 4rem auto;
+    border: 0.1px solid rgba(0, 0, 0, 0.299);
+    border-radius: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    animation: myAnim 1s ease-in-out 0s 1 normal forwards;
+}
+
+@keyframes myAnim {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 0;
+		transform: translateY(-250px);
+	}
+
+	38% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	55% {
+		animation-timing-function: ease-in;
+		transform: translateY(-65px);
+	}
+
+	72% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	81% {
+		animation-timing-function: ease-in;
+		transform: translateY(-28px);
+	}
+
+	90% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	95% {
+		animation-timing-function: ease-in;
+		transform: translateY(-8px);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+}
+
+.form-container{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 30rem;
+	padding: 2rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+	height: 100%;
+	justify-content: space-between;
+    margin-bottom: 2rem;
+	padding: 1rem;
+}
+
+.icon{
+    width: 3rem;
+    height: 3rem;
+}
+
+#new-post, .create-post-btn{
+    border-radius: 5px;
+    margin-top: 1rem;
+    padding: .5rem;
+}
