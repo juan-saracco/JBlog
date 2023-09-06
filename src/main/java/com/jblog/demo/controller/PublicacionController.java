@@ -1,14 +1,11 @@
 package com.jblog.demo.controller;
 
 import com.jblog.demo.model.Publicacion;
-import com.jblog.demo.model.Usuario;
-import com.jblog.demo.repository.UsuarioRepository;
 import com.jblog.demo.service.PublicacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,9 +14,6 @@ import java.util.Optional;
 public class PublicacionController {
     @Autowired
     private PublicacionService publicacionService;
-
-    @Autowired
-    private UsuarioRepository usuarioRepository;
     
     //bien
     @GetMapping

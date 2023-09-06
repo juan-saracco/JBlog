@@ -94,32 +94,16 @@
     <!--Controlers -->
 
     <section class="form-container border-top">
-       <!-- Create user-->
-       <form class="form" action="" method="post">
-        <label for="userName">Nombre de usaurio:</label>
-        <input type="text" name="username" id="userName">
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email">
-        <div class="d-flex justify-content-end mb-4">
-          <a
-            id="new-user"
-            type="submit"
-            class="btn create-post-btn btn-primary text-uppercase"
-            href="#!"
-            >Create Post→</a
-          >
-          </div>
-      </a>
-      </form>      
-
-
-
+    
       <!-- Post preview-->
         <form class="form post-preview" action="" method="post">
-            <label for="title">Titulo:</label>
+          <h2>Crear Post</h2>
+            <label for="user">Nombre de usuario:</label>
+            <input type="text" name="user" id="user">
+            <label for="post-title">Titulo:</label>
             <input name="title" type="text" id="post-title"></input>
-            <label for="content">Contenido:</label>
-            <textarea name="content" type="text" rows="4" cols="50" id="post-content"></textarea>
+            <label for="post-content">Contenido:</label>
+            <textarea name="content" type="text" rows="4" cols="30" id="post-content"></textarea>
             <div class="d-flex justify-content-end mb-4">
               <a
                 id="new-post"

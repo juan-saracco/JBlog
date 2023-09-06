@@ -30,6 +30,6 @@ function loadPosts(){
             postContainer.appendChild(autor);
 
             contendor.appendChild(postContainer);
-            console.log(post);
+            //console.log(post);
         }
     })}

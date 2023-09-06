@@ -8,13 +8,14 @@
 </head>
 <body>
     <div class="log-form">
-        <h2>Login to your account</h2>
-        <form>
-          <input type="text" title="username" placeholder="username" />
-          <input type="password" title="username" placeholder="password" />
-          <button type="submit" class="btn">Login</button>
-          <a class="forgot" href="#">Forgot Username?</a>
+        <h2>Crear Usuario</h2>
+        <form method="post">
+          <input required minlength=3
+          id="userName" type="text" title="username" placeholder="Username" />
+          <input required id="email" type="email" title="email" placeholder="Email" />
+          <button type="submit" id="loginBtn" class="btn">Login</button>
         </form>
       </div>
+      <script src="js/login.js"></script>
 </body>
 </html>

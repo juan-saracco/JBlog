@@ -6,7 +6,6 @@ import com.jblog.demo.repository.UsuarioRepository;
 import com.jblog.demo.service.PublicacionService;
 import com.jblog.demo.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +31,7 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarios);
     }
 
-    // chequear
+    // bien!
     @GetMapping("/{id}/publicaciones")
     public ResponseEntity<Optional<Publicacion>> obtenerPublicacionesDeUsuario(@PathVariable Long id) {
         Optional<Usuario> usuario = usuarioService.buscarPorId(id);
@@ -59,7 +58,7 @@ public class UsuarioController {
         return ResponseEntity.ok(nuevoUsuario);
     }
 
-    // chequear!
+    // bien!
     @PostMapping("/publicaciones/{id}")
     public ResponseEntity<Publicacion> crearPublicacionParaUsuario(@PathVariable Long id,
             @RequestBody Publicacion publicacion) {
@@ -89,5 +88,7 @@ public class UsuarioController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
 
 }
